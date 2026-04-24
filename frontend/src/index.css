@@ -1,0 +1,136 @@
+@import "tailwindcss";
+
+@theme {
+  --color-sport-blue: #0ea5e9;
+  --color-sport-blue-dark: #0284c7;
+  --color-sport-orange: #f97316;
+  --color-sport-orange-dark: #ea580c;
+  --color-sport-green: #22c55e;
+  --color-sport-green-dark: #16a34a;
+  --color-sport-dark: #0f172a;
+  --color-sport-panel: #ffffff;
+}
+
+@layer base {
+  body {
+    margin: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #f1f5f9;
+    background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
+    background-size: 20px 20px;
+    min-height: 100vh;
+    color: #1e293b;
+  }
+}
+
+@layer utilities {
+  .sport-card {
+    background: #ffffff;
+    border-radius: 1.5rem;
+    box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.05), 0 8px 10px -6px rgba(15, 23, 42, 0.01);
+    border: 1px solid rgba(15, 23, 42, 0.05);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .sport-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.1), 0 8px 10px -6px rgba(15, 23, 42, 0.01);
+  }
+
+  .sport-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--color-sport-blue);
+    border-top-left-radius: 1.5rem;
+    border-bottom-left-radius: 1.5rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .sport-card:hover::before {
+    opacity: 1;
+  }
+
+  .sport-card-orange::before {
+    background: var(--color-sport-orange);
+  }
+
+  .sport-card-green::before {
+    background: var(--color-sport-green);
+  }
+
+  .btn-sport-primary {
+    background: var(--color-sport-blue);
+    color: white;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 14px 0 rgba(14, 165, 233, 0.39);
+  }
+
+  .btn-sport-primary:hover {
+    background: var(--color-sport-blue-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(14, 165, 233, 0.23);
+  }
+
+  .btn-sport-accent {
+    background: var(--color-sport-orange);
+    color: white;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 14px 0 rgba(249, 115, 22, 0.39);
+  }
+
+  .btn-sport-accent:hover {
+    background: var(--color-sport-orange-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(249, 115, 22, 0.23);
+  }
+
+  .glass-panel {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.05);
+  }
+
+  .stat-value {
+    font-size: 3rem;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.05em;
+  }
+}
+
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slideUpFade 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
